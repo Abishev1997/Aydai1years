@@ -1,0 +1,263 @@
+index.html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Тұсау кесер – Приглашение</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&family=Poppins:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #ffd6e8, #fff1f7);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.95);
+      width: 100%;
+      max-width: 420px;
+      padding: 32px 24px 40px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      animation: fadeIn 2s ease forwards;
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      margin: 0 0 6px;
+      color: #d63384;
+      font-weight: 600;
+    }
+
+    .name-big {
+      font-family: 'Pacifico', cursive;
+      font-size: 46px;
+      font-weight: 400;
+      color: #ff2e88;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }
+
+    .date {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .time {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .place {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 26px;
+    }
+
+    .block {
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    .block:nth-child(1) { animation-delay: 0.3s; }
+    .block:nth-child(2) { animation-delay: 0.8s; }
+    .block:nth-child(3) { animation-delay: 1.3s; }
+
+    .rsvp {
+      text-align: left;
+      margin-top: 12px;
+    }
+
+    label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    .btn {
+      width: 100%;
+      background: linear-gradient(135deg, #ff7ab8, #ff4f9a);
+      border: none;
+      padding: 14px;
+      border-radius: 14px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .music-btn {
+      margin-top: 14px;
+      background: #fff;
+      border: 1px solid #ff7ab8;
+      color: #ff4f9a;
+      border-radius: 14px;
+      padding: 12px;
+      cursor: pointer;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .thankyou {
+      display: none;
+      margin-top: 18px;
+      font-size: 16px;
+      color: #28a745;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="block">
+      <h1>Тұсау кесер!</h1>
+      <div class="name-big" style="font-size:38px;">Айдай</div>
+      <div class="subtitle">Дорогие родные и близкие!</div>
+    </div>
+
+    <div class="block">
+      <div class="date">23 января 2026 года</div>
+      <div class="time">Начало: 17:00</div>
+      <div class="place">
+        Ресторан Mahabbat Hall<br>
+        г. Астана, улица Ермек Серкебаев, 17
+      </div>
+    </div>
+
+    <div class="block">
+      <div style="font-size: 15px; line-height: 1.6; margin-bottom: 18px;">
+        С радостью приглашаем вас разделить
+        с нами тёплый и трогательный праздник
+        в честь нашей дочери <b>Айдай</b>
+        по случаю её <b>Тұсау кесер</b> 
+      </div>
+
+      <div class="rsvp">
+        <label>Ваше имя:</label>
+        <input type="text" id="name" placeholder="Введите ваше имя">
+
+        <label>С кем вы придёте?</label>
+        <input type="text" id="withWho" placeholder="Один / с супругом(ой) / с семьёй">
+
+        <label>Вы придёте?</label>
+        <select id="status">
+          <option value="">Выберите вариант</option>
+          <option>Да, обязательно приду</option>
+          <option>К сожалению, не смогу прийти</option>
+        </select>
+
+        <button class="btn" onclick="sendRSVP()">Отправить ответ</button>
+        <div class="thankyou" id="thanks">Спасибо! Ваш ответ принят </div>
+
+        <button class="music-btn" onclick="startMusic()">▶ Включить нежную детскую музыку</button>
+      </div>
+    </div>
+
+  </div>
+
+  <audio id="bgMusic" src="connie_francis_pretty_little_baby-mob4ik.com.mp3" preload="auto" loop autoplay muted></audio>
+
+  <script>
+    const music = document.getElementById('bgMusic');
+    let playing = false;
+
+    // тихий автозапуск
+    music.volume = 0.12; // очень тихо
+
+    window.addEventListener('load', () => {
+      try {
+        music.play();
+        playing = true;
+      } catch (e) {}
+    });
+
+    // при первом касании — снимаем mute
+    document.addEventListener('click', () => {
+      if (music.muted) {
+        music.muted = false; // теперь слышно, но тихо
+      }
+    }, { once: true });
+
+    function startMusic() {
+      if (!playing) {
+        music.muted = false;
+        music.play();
+        playing = true;
+      } else {
+        music.pause();
+        playing = false;
+      }
+    }
+
+    function sendRSVP() {
+      const name = document.getElementById('name').value;
+      const withWho = document.getElementById('withWho').value;
+      const status = document.getElementById('status').value;
+
+      if (!name || !status) {
+        alert('Пожалуйста, введите имя и выберите вариант ответа');
+        return;
+      }
+
+      const phone = '77075854898';
+      const message = `Тұсау кесер Айдай
+
+Имя: ${name}
+С кем придёт: ${withWho || 'Не указано'}
+Ответ: ${status}`;
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+      window.open(url, '_blank');
+      document.getElementById('thanks').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
+/invite/
+ ├ index.html
+ └ connie_francis_pretty_little_baby-mob4ik.com.mp3
